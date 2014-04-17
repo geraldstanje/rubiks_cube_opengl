@@ -1,5 +1,5 @@
 all: rubik
-OBJS = sbmptexture.o sbmpfont.o main.o
+OBJS = sbmptexture.o sbmpfont.o rubikscube.o main.o
 CC = g++
 DEBUG = -g
 CFLAGS = -Wall -O3 -c $(DEBUG) -std=c++11 -pthread -D_GLIBCXX_USE_NANOSLEEP -D_GLIBCXX_USE_SCHED_YIELD
@@ -17,7 +17,10 @@ sbmptexture.o : sbmptexture.h
 sbmpfont.o : sbmpfont.h
 	$(CC) $(CFLAGS) sbmpfont.cpp $(INCLUDES)
 
-main.o : sbmpfont.h sbmptexture.h
+rubikscube.o : rubikscube.h sbmpfont.h sbmptexture.h
+	$(CC) $(CFLAGS) rubikscube.cpp $(INCLUDES)
+	
+main.o : rubikscube.h
 	$(CC) $(CFLAGS) main.cpp $(INCLUDES)
 	    
 clean:
