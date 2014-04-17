@@ -250,11 +250,17 @@ int DrawGLScene() {
 
 	// Set Bitmap Font
 	glPushAttrib(GL_ENABLE_BIT | GL_COLOR_BUFFER_BIT | GL_TEXTURE_BIT);
-    glEnable(GL_TEXTURE_2D);
+  glEnable(GL_TEXTURE_2D);
 
 	glColor3f(1.0f,1.0f,1.0f);	// Set the color to white and display some messages
-	rubi.font.printAt(20,450,"Keys: l=Left, f=Front, r=Right, b=Back, u=Up, d=Down");
-	rubi.font.printAt(80,430,"Shift+l=Left',...");
+	rubi.font.printAt(380,450,"Control Keys:"); //Keys: l=Left, f=Front, r=Right, b=Back, u=Up, d=Down");
+	rubi.font.printAt(380,430,"Left Rotate: l");//", f=Front, r=Right, b=Back, u=Up, d=Down");
+  rubi.font.printAt(380,410,"Front Rotate: f");
+  rubi.font.printAt(380,390,"Right Rotate: r");
+  rubi.font.printAt(380,370,"Back Rotate: b");
+  rubi.font.printAt(380,350,"Up Rotate: u");
+  rubi.font.printAt(380,330,"Down Rotate: d");
+  rubi.font.printAt(380,310,"Anticlockwise: Shift+Key");
 	
 	stringstream str;
 	str << "FPS: " << rubi.FPS;
