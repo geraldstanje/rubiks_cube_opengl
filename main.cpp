@@ -20,8 +20,8 @@ SDL_GLContext gContext;
 
 enum Key { NO_GAME_KEY = 0, KEY_ROT_UP_CUBE = 1, KEY_ROT_DOWN_CUBE = 2 };
 bool key_map[2];
-GLfloat	rquad1;
-GLfloat	rquad2;
+//GLfloat	rquad1;
+//GLfloat	rquad2;
 
 float rot[3] = {40.0f, 45.0f, 0.0f };
 float oldMousePos_x = 0.0f;
@@ -362,74 +362,71 @@ void close() {
 }
 
 int main(int argc, char **argv) {
-    memset(&key_map, 0, sizeof(key_map));
+  memset(&key_map, 0, sizeof(key_map));
     
-    // Start up SDL and create window
+  // Start up SDL and create window
 	if( !init() ) {
 		printf( "Failed to initialize!\n" );
 	}
 	else {
-        rubi.load_textures();
+    rubi.load_textures();
         
-        // create the displaylist
-        for (int i=0;i<7;i++) rubi.make_face(rubi.cube_faces[i],i);
+    // create the displaylist
+    for (int i=0;i<7;i++) rubi.make_face(rubi.cube_faces[i],i);
         
-        // initalizing colors
-        int surface_color[54] = {rubi.ORANGE, rubi.ORANGE, rubi.ORANGE, rubi.ORANGE, rubi.ORANGE, rubi.ORANGE, rubi.ORANGE, rubi.ORANGE, rubi.ORANGE,
-                                 rubi.YELLOW, rubi.YELLOW, rubi.YELLOW, rubi.YELLOW, rubi.YELLOW, rubi.YELLOW, rubi.YELLOW, rubi.YELLOW, rubi.YELLOW,
-                                 rubi.RED, rubi.RED, rubi.RED, rubi.RED, rubi.RED, rubi.RED, rubi.RED, rubi.RED, rubi.RED,
-                                 rubi.WHITE, rubi.WHITE, rubi.WHITE, rubi.WHITE, rubi.WHITE, rubi.WHITE, rubi.WHITE, rubi.WHITE, rubi.WHITE,
-                                 rubi.GREEN, rubi.GREEN, rubi.GREEN, rubi.GREEN, rubi.GREEN, rubi.GREEN, rubi.GREEN, rubi.GREEN, rubi.GREEN,
-                                 rubi.BLUE, rubi.BLUE, rubi.BLUE, rubi.BLUE, rubi.BLUE, rubi.BLUE, rubi.BLUE, rubi.BLUE, rubi.BLUE};
+    // initalizing colors
+    int surface_color[54] = {rubi.ORANGE, rubi.ORANGE, rubi.ORANGE, rubi.ORANGE, rubi.ORANGE, rubi.ORANGE, rubi.ORANGE, rubi.ORANGE, rubi.ORANGE,
+                             rubi.YELLOW, rubi.YELLOW, rubi.YELLOW, rubi.YELLOW, rubi.YELLOW, rubi.YELLOW, rubi.YELLOW, rubi.YELLOW, rubi.YELLOW,
+                             rubi.RED, rubi.RED, rubi.RED, rubi.RED, rubi.RED, rubi.RED, rubi.RED, rubi.RED, rubi.RED,
+                             rubi.WHITE, rubi.WHITE, rubi.WHITE, rubi.WHITE, rubi.WHITE, rubi.WHITE, rubi.WHITE, rubi.WHITE, rubi.WHITE,
+                             rubi.GREEN, rubi.GREEN, rubi.GREEN, rubi.GREEN, rubi.GREEN, rubi.GREEN, rubi.GREEN, rubi.GREEN, rubi.GREEN,
+                             rubi.BLUE, rubi.BLUE, rubi.BLUE, rubi.BLUE, rubi.BLUE, rubi.BLUE, rubi.BLUE, rubi.BLUE, rubi.BLUE};
         
-        for (int x=0;x<3;x++) for (int y=0;y<3;y++) for (int z=0;z<3;z++) for (int face=0;face<6;face++) rubi.rubik_colors[x][y][z][face] = rubi.BLACK;
+    for (int x=0;x<3;x++) for (int y=0;y<3;y++) for (int z=0;z<3;z++) for (int face=0;face<6;face++) rubi.rubik_colors[x][y][z][face] = rubi.BLACK;
         
-        rubi.intialize_surface(surface_color);
+    rubi.intialize_surface(surface_color);
         
 		// Main loop flag
 		bool quit = false;
-        
-		// Event handler
-		SDL_Event e;
         
 		// Enable text input
 		SDL_StartTextInput();
         
 		// While application is running
 		while( !quit ) {
-            if (! handleEvents() ) {
-                break;
-            }
+      if (! handleEvents() ) {
+        break;
+      }
             
-            // Init values
-            static float framestart = SDL_GetTicks();
-            static float frameend = 0.0f;
+      // Init values
+      static float framestart = SDL_GetTicks();
+      static float frameend = 0.0f;
             
-            // Repeat this loop until the start of the frame
-            // is not the same as the end of frame (prevents on
-            // fast machines that a frame will be drawn twice)
-            do {
-                frameend = SDL_GetTicks();
-            }
-            while (frameend == framestart);
+      // Repeat this loop until the start of the frame
+      // is not the same as the end of frame (prevents on
+      // fast machines that a frame will be drawn twice)
+      do {
+        frameend = SDL_GetTicks();
+      }
+      while (frameend == framestart);
             
-            // calculate frametime
-            rubi.frametime = frameend - framestart;
-            framestart = frameend;
+      // calculate frametime
+      rubi.frametime = frameend - framestart;
+      framestart = frameend;
             
-            // Die Szene ausgeben
-            DrawGLScene();
+      // Die Szene ausgeben
+      DrawGLScene();
             
-			// Update screen
+	    // Update screen
 			SDL_GL_SwapWindow( gWindow );
-		}
+    }
         
 		// Disable text input
-		SDL_StopTextInput();
+	  SDL_StopTextInput();
 	}
     
 	// Free resources and close SDL
 	close();
 
-    return 0;
+  return 0;
 }
