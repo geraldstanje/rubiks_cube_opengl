@@ -11,17 +11,17 @@ INCLUDES += -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platfo
 rubik : $(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) -o rubik
 
-sbmptexture.o : sbmptexture.h
-	$(CC) $(CFLAGS) sbmptexture.cpp $(INCLUDES)
+sbmptexture.o : src/sbmptexture.h
+	$(CC) $(CFLAGS) src/sbmptexture.cpp $(INCLUDES)
 	
-sbmpfont.o : sbmpfont.h
-	$(CC) $(CFLAGS) sbmpfont.cpp $(INCLUDES)
+sbmpfont.o : src/sbmpfont.h
+	$(CC) $(CFLAGS) src/sbmpfont.cpp $(INCLUDES)
 
-rubikscube.o : rubikscube.h sbmpfont.h sbmptexture.h
-	$(CC) $(CFLAGS) rubikscube.cpp $(INCLUDES)
+rubikscube.o : src/rubikscube.h src/sbmpfont.h src/sbmptexture.h
+	$(CC) $(CFLAGS) src/rubikscube.cpp $(INCLUDES)
 	
-main.o : rubikscube.h
-	$(CC) $(CFLAGS) main.cpp $(INCLUDES)
+main.o : src/rubikscube.h
+	$(CC) $(CFLAGS) src/main.cpp $(INCLUDES)
 	    
 clean:
 	rm -f *.o rubik
