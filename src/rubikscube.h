@@ -21,31 +21,31 @@ using namespace std;
 
 class RubiksCube {
 private:
-	struct color_container { int colors[6]; };
-	GLfloat farbeNach3f[7][3];
+  struct color_container { int colors[6]; };
+  GLfloat farbeNach3f[7][3];
     
 public:
-	int rubik_colors[3][3][3][6]; // Dim1=Spalte 0-2, Dim2=Reihe 0-2, Dim3=Tiefe 0-2, Dim4=Wuerfenseite 0-5
-	float rotation[6];
-	float rot;
+  int rubik_colors[3][3][3][6]; // Dim1=Spalte 0-2, Dim2=Reihe 0-2, Dim3=Tiefe 0-2, Dim4=Wuerfenseite 0-5
+  float rotation[6];
+  float rot;
 	enum Color { WHITE=0, RED=1, ORANGE=2, YELLOW=3, GREEN=4, BLUE=5, BLACK=6 };
 	enum Side { LEFT=0, FRONT=1, RIGHT=2, BACK=3, TOP=4, BOTTOM=5 };
 	GLuint cube_faces[6];
 	GLuint CoordinateAxis;
-    SBMPFont font;
-    SBMPTexture texture_white;
-    SBMPTexture texture_red;
-    SBMPTexture texture_orange;
-    SBMPTexture texture_yellow;
-    SBMPTexture texture_blue;
-    SBMPTexture texture_green;
-    SBMPTexture texture_black;
-    int	FPS;
-    int Frames;
-    int LastFPS; // Last FPS Check Time
-    float frametime;
-    string movements;
-    unsigned int movements_done;
+  SBMPFont font;
+  SBMPTexture texture_white;
+  SBMPTexture texture_red;
+  SBMPTexture texture_orange;
+  SBMPTexture texture_yellow;
+  SBMPTexture texture_blue;
+  SBMPTexture texture_green;
+  SBMPTexture texture_black;
+  int	FPS;
+  int Frames;
+  int LastFPS; // Last FPS Check Time
+  float frametime;
+  string movements;
+  unsigned int movements_done;
     
 public:
 	RubiksCube();
@@ -69,8 +69,7 @@ public:
     
 	bool inRotation();
 	void HandleKeyboard();
-    
-    void load_textures();
+  void load_textures();
 };
 
 #endif
