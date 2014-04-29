@@ -60,10 +60,10 @@ void RubiksCube::make_face(GLuint &displaylist, int color) {
   glBegin(GL_QUADS);
     glColor3fv(farbeNach3f[color]);
     glNormal3f( 0.0f, 1.0f, 0.0f);
-    glTexCoord2f(0.0f, 0.0f); glVertex3f( 0.9f, 1.0f,-0.9f);					// Top Right Of The Quad (Top)
-    glTexCoord2f(0.0f, 1.0f); glVertex3f(-0.9f, 1.0f,-0.9f);					// Top Left Of The Quad (Top)
-    glTexCoord2f(1.0f, 1.0f); glVertex3f(-0.9f, 1.0f, 0.9f);					// Bottom Left Of The Quad (Top)
-    glTexCoord2f(1.0f, 0.0f); glVertex3f( 0.9f, 1.0f, 0.9f);					// Bottom Right Of The Quad (Top)
+    glTexCoord2f(0.0f, 0.0f); glVertex3f( 0.9f, 1.0f,-0.9f);          // Top Right Of The Quad (Top)
+    glTexCoord2f(0.0f, 1.0f); glVertex3f(-0.9f, 1.0f,-0.9f);          // Top Left Of The Quad (Top)
+    glTexCoord2f(1.0f, 1.0f); glVertex3f(-0.9f, 1.0f, 0.9f);          // Bottom Left Of The Quad (Top)
+    glTexCoord2f(1.0f, 0.0f); glVertex3f( 0.9f, 1.0f, 0.9f);          // Bottom Right Of The Quad (Top)
   glEnd();
         
   texture_black.select();
@@ -74,10 +74,10 @@ void RubiksCube::make_face(GLuint &displaylist, int color) {
   glColor3fv(farbeNach3f[BLACK]);
   glBegin(GL_QUADS);
     glNormal3f( 0.0f, 1.0f, 0.0f);
-      glTexCoord2f(0.0f, 0.0f); glVertex3f( 0.05f, 1.0f,-0.9f);					// Top Right Of The Quad (Top)
-      glTexCoord2f(0.0f, 1.0f); glVertex3f(-0.05f, 1.0f,-0.9f);					// Top Left Of The Quad (Top)
-      glTexCoord2f(1.0f, 1.0f); glVertex3f(-0.05f, 1.0f, 0.9f);					// Bottom Left Of The Quad (Top)
-      glTexCoord2f(1.0f, 0.0f); glVertex3f( 0.05f, 1.0f, 0.9f);					// Bottom Right Of The Quad (Top)
+      glTexCoord2f(0.0f, 0.0f); glVertex3f( 0.05f, 1.0f,-0.9f);         // Top Right Of The Quad (Top)
+      glTexCoord2f(0.0f, 1.0f); glVertex3f(-0.05f, 1.0f,-0.9f);         // Top Left Of The Quad (Top)
+      glTexCoord2f(1.0f, 1.0f); glVertex3f(-0.05f, 1.0f, 0.9f);         // Bottom Left Of The Quad (Top)
+      glTexCoord2f(1.0f, 0.0f); glVertex3f( 0.05f, 1.0f, 0.9f);         // Bottom Right Of The Quad (Top)
   glEnd();
         
   glTranslatef(1.9f,0.0f,0.0f);
@@ -85,10 +85,10 @@ void RubiksCube::make_face(GLuint &displaylist, int color) {
   glColor3fv(farbeNach3f[BLACK]);
   glBegin(GL_QUADS);
     glNormal3f( 0.0f, 1.0f, 0.0f);
-    glTexCoord2f(0.0f, 0.0f); glVertex3f( 0.05f, 1.0f,-0.9f);					// Top Right Of The Quad (Top)
-    glTexCoord2f(0.0f, 1.0f); glVertex3f(-0.05f, 1.0f,-0.9f);					// Top Left Of The Quad (Top)
-    glTexCoord2f(1.0f, 1.0f); glVertex3f(-0.05f, 1.0f, 0.9f);					// Bottom Left Of The Quad (Top)
-    glTexCoord2f(1.0f, 0.0f); glVertex3f( 0.05f, 1.0f, 0.9f);					// Bottom Right Of The Quad (Top)
+    glTexCoord2f(0.0f, 0.0f); glVertex3f( 0.05f, 1.0f,-0.9f);         // Top Right Of The Quad (Top)
+    glTexCoord2f(0.0f, 1.0f); glVertex3f(-0.05f, 1.0f,-0.9f);         // Top Left Of The Quad (Top)
+    glTexCoord2f(1.0f, 1.0f); glVertex3f(-0.05f, 1.0f, 0.9f);         // Bottom Left Of The Quad (Top)
+    glTexCoord2f(1.0f, 0.0f); glVertex3f( 0.05f, 1.0f, 0.9f);         // Bottom Right Of The Quad (Top)
   glEnd();
         
   glTranslatef(-0.95f,0.0f,-0.95f);
@@ -96,10 +96,10 @@ void RubiksCube::make_face(GLuint &displaylist, int color) {
   glColor3fv(farbeNach3f[BLACK]);
   glBegin(GL_QUADS);
     glNormal3f( 0.0f, 1.0f, 0.0f);
-    glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, 1.0f,-0.05f);					// Top Right Of The Quad (Top)
-    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f, 1.0f,-0.05f);					// Top Left Of The Quad (Top)
-    glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f, 1.0f, 0.05f);					// Bottom Left Of The Quad (Top)
-    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, 1.0f, 0.05f);					// Bottom Right Of The Quad (Top)
+    glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, 1.0f,-0.05f);         // Top Right Of The Quad (Top)
+    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f, 1.0f,-0.05f);         // Top Left Of The Quad (Top)
+    glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f, 1.0f, 0.05f);         // Bottom Left Of The Quad (Top)
+    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, 1.0f, 0.05f);         // Bottom Right Of The Quad (Top)
   glEnd();
         
   glTranslatef(0.0f,0.0f,1.90f);
@@ -107,20 +107,20 @@ void RubiksCube::make_face(GLuint &displaylist, int color) {
   glColor3fv(farbeNach3f[BLACK]);
   glBegin(GL_QUADS);
     glNormal3f( 0.0f, 1.0f, 0.0f);
-    glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, 1.0f,-0.05f);					// Top Right Of The Quad (Top)
-    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f, 1.0f,-0.05f);					// Top Left Of The Quad (Top)
-    glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f, 1.0f, 0.05f);					// Bottom Left Of The Quad (Top)
-    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, 1.0f, 0.05f);					// Bottom Right Of The Quad (Top)
+    glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, 1.0f,-0.05f);         // Top Right Of The Quad (Top)
+    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f, 1.0f,-0.05f);         // Top Left Of The Quad (Top)
+    glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f, 1.0f, 0.05f);         // Bottom Left Of The Quad (Top)
+    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, 1.0f, 0.05f);         // Bottom Right Of The Quad (Top)
   glEnd();
         
 #else
         
   glBegin(GL_QUADS);
   glColor3fv(farbeNach3f[color]);
-    glVertex3f( 0.8f, 1.0f,-0.8f);					// Top Right Of The Quad (Top)
-    glVertex3f(-0.8f, 1.0f,-0.8f);					// Top Left Of The Quad (Top)
-    glVertex3f(-0.8f, 1.0f, 0.8f);					// Bottom Left Of The Quad (Top)
-    glVertex3f( 0.8f, 1.0f, 0.8f);					// Bottom Right Of The Quad (Top)
+    glVertex3f( 0.8f, 1.0f,-0.8f);          // Top Right Of The Quad (Top)
+    glVertex3f(-0.8f, 1.0f,-0.8f);          // Top Left Of The Quad (Top)
+    glVertex3f(-0.8f, 1.0f, 0.8f);          // Bottom Left Of The Quad (Top)
+    glVertex3f( 0.8f, 1.0f, 0.8f);          // Bottom Right Of The Quad (Top)
   glEnd();
         
         
@@ -129,40 +129,40 @@ void RubiksCube::make_face(GLuint &displaylist, int color) {
         
   glColor3fv(farbeNach3f[Color::BLACK]);
   glBegin(GL_QUADS);
-    glVertex3f( 0.1f, 1.0f,-0.8);					// Top Right Of The Quad (Top)
-    glVertex3f(-0.1f, 1.0f,-0.8);					// Top Left Of The Quad (Top)
-    glVertex3f(-0.1f, 1.0f, 0.8);					// Bottom Left Of The Quad (Top)
-    glVertex3f( 0.1f, 1.0f, 0.8);					// Bottom Right Of The Quad (Top)
+    glVertex3f( 0.1f, 1.0f,-0.8);         // Top Right Of The Quad (Top)
+    glVertex3f(-0.1f, 1.0f,-0.8);         // Top Left Of The Quad (Top)
+    glVertex3f(-0.1f, 1.0f, 0.8);         // Bottom Left Of The Quad (Top)
+    glVertex3f( 0.1f, 1.0f, 0.8);         // Bottom Right Of The Quad (Top)
   glEnd();
         
   glTranslatef(1.8f,0.0f,0.0f);
         
   glColor3fv(farbeNach3f[Color::BLACK]);
   glBegin(GL_QUADS);
-    glVertex3f( 0.1f, 1.0f,-0.8);					// Top Right Of The Quad (Top)
-    glVertex3f(-0.1f, 1.0f,-0.8);					// Top Left Of The Quad (Top)
-    glVertex3f(-0.1f, 1.0f, 0.8);					// Bottom Left Of The Quad (Top)
-    glVertex3f( 0.1f, 1.0f, 0.8);					// Bottom Right Of The Quad (Top)
+    glVertex3f( 0.1f, 1.0f,-0.8);         // Top Right Of The Quad (Top)
+    glVertex3f(-0.1f, 1.0f,-0.8);         // Top Left Of The Quad (Top)
+    glVertex3f(-0.1f, 1.0f, 0.8);         // Bottom Left Of The Quad (Top)
+    glVertex3f( 0.1f, 1.0f, 0.8);         // Bottom Right Of The Quad (Top)
   glEnd();
         
   glTranslatef(-0.9f,0.0f,-0.9f);
         
   glColor3fv(farbeNach3f[Color::BLACK]);
   glBegin(GL_QUADS);
-    glVertex3f( 1.0f, 1.0f,-0.1);					// Top Right Of The Quad (Top)
-    glVertex3f(-1.0f, 1.0f,-0.1);					// Top Left Of The Quad (Top)
-    glVertex3f(-1.0f, 1.0f, 0.1);					// Bottom Left Of The Quad (Top)
-    glVertex3f( 1.0f, 1.0f, 0.1);					// Bottom Right Of The Quad (Top)
+    glVertex3f( 1.0f, 1.0f,-0.1);         // Top Right Of The Quad (Top)
+    glVertex3f(-1.0f, 1.0f,-0.1);         // Top Left Of The Quad (Top)
+    glVertex3f(-1.0f, 1.0f, 0.1);         // Bottom Left Of The Quad (Top)
+    glVertex3f( 1.0f, 1.0f, 0.1);         // Bottom Right Of The Quad (Top)
   glEnd();
         
   glTranslatef(0.0f,0.0f,1.8f);
         
   glColor3fv(farbeNach3f[Color::BLACK]);
   glBegin(GL_QUADS);
-    glVertex3f( 1.0f, 1.0f,-0.1);					// Top Right Of The Quad (Top)
-    glVertex3f(-1.0f, 1.0f,-0.1);					// Top Left Of The Quad (Top)
-    glVertex3f(-1.0f, 1.0f, 0.1);					// Bottom Left Of The Quad (Top)
-    glVertex3f( 1.0f, 1.0f, 0.1);					// Bottom Right Of The Quad (Top)
+    glVertex3f( 1.0f, 1.0f,-0.1);         // Top Right Of The Quad (Top)
+    glVertex3f(-1.0f, 1.0f,-0.1);         // Top Left Of The Quad (Top)
+    glVertex3f(-1.0f, 1.0f, 0.1);         // Bottom Left Of The Quad (Top)
+    glVertex3f( 1.0f, 1.0f, 0.1);         // Bottom Right Of The Quad (Top)
   glEnd();
 #endif
         
@@ -224,7 +224,7 @@ void RubiksCube::intialize_face(const int *surface_color, unsigned int side) {
   else if(side == FRONT) {
     // Front Surface
     //for (int x=0;x<3;x++) for (int y=0;y<3;y++){
-    //	rubik_colors[x][y][2][FRONT] = surface_color[a++];
+    //  rubik_colors[x][y][2][FRONT] = surface_color[a++];
     //}
     rubik_colors[0][2][2][FRONT] = surface_color[a++];
     rubik_colors[1][2][2][FRONT] = surface_color[a++];
@@ -239,7 +239,7 @@ void RubiksCube::intialize_face(const int *surface_color, unsigned int side) {
   else if(side == RIGHT) {
     // Right Surface
     //for (int y=0;y<3;y++) for (int z=0;z<3;z++){
-    //	rubik_colors[2][y][z][RIGHT] = surface_color[a++];
+    //  rubik_colors[2][y][z][RIGHT] = surface_color[a++];
     //}
     rubik_colors[2][0][2][RIGHT] = surface_color[a++];
     rubik_colors[2][1][2][RIGHT] = surface_color[a++];
@@ -254,7 +254,7 @@ void RubiksCube::intialize_face(const int *surface_color, unsigned int side) {
   else if(side == BACK) {
     // Back Surface
     //for (int x=0;x<3;x++) for (int y=0;y<3;y++){
-    //	rubik_colors[x][y][0][BACK] = surface_color[a++];
+    //  rubik_colors[x][y][0][BACK] = surface_color[a++];
     //}
     rubik_colors[0][0][0][BACK] = surface_color[a++];
     rubik_colors[1][0][0][BACK] = surface_color[a++];
@@ -269,7 +269,7 @@ void RubiksCube::intialize_face(const int *surface_color, unsigned int side) {
   else if(side == TOP) {
     // Top Surface
     //for (int x=0;x<3;x++) for (int z=0;z<3;z++) {
-    //	rubik_colors[x][2][z][TOP] = surface_color[a++];
+    //  rubik_colors[x][2][z][TOP] = surface_color[a++];
     //}
     rubik_colors[0][2][0][TOP] = surface_color[a++];
     rubik_colors[1][2][0][TOP] = surface_color[a++];
@@ -284,7 +284,7 @@ void RubiksCube::intialize_face(const int *surface_color, unsigned int side) {
   else if(side == BOTTOM) {
     // Bottom Surface
     //for (int x=0;x<3;x++) for (int z=0;z<3;z++) {
-    //	rubik_colors[x][0][z][BOTTOM] = surface_color[a++];
+    //  rubik_colors[x][0][z][BOTTOM] = surface_color[a++];
     //}
     rubik_colors[0][0][2][BOTTOM] = surface_color[a++];
     rubik_colors[1][0][2][BOTTOM] = surface_color[a++];
@@ -360,7 +360,7 @@ void RubiksCube::RenderCube(float X, float Y, float Z, float SCALE, color_contai
     glCallList(cube_faces[color.colors[i]]);
             
     glPopAttrib();
-			
+      
     glPopMatrix();
   }
         
@@ -565,7 +565,7 @@ void RubiksCube::DrawCoordinateSystem() {
     
 bool RubiksCube::inRotation() {
   bool inRotation = false;
-		
+    
   for (int i = 0; i < 6; i++) {
     if (rotation[i] != 0.0f) {
       inRotation = true;

@@ -19,67 +19,67 @@ SBMPTexture::~SBMPTexture() {
 }
 
 SBMPTexture::SBMPTexture(const char *filename, int minFilter, int magFilter, bool clampToEdge) {
-  createTexture(filename, minFilter, magFilter, clampToEdge);	
+  createTexture(filename, minFilter, magFilter, clampToEdge); 
 }
 
 bool SBMPTexture::createTexture(const char *filename, int minFilter, int magFilter, bool clampToEdge) {
   SDL_Surface *bmpFile;
 
- 	destroy();
+  destroy();
 
-	if ( (bmpFile = SDL_LoadBMP(filename) ) ) {
+  if ( (bmpFile = SDL_LoadBMP(filename) ) ) {
     glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
-		
-		glGenTextures(1, &texture);
-		glBindTexture(GL_TEXTURE_2D,texture);
+    
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D,texture);
 
-		if (clampToEdge) {
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-		}
+    if (clampToEdge) {
+      glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+      glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    }
 
-		glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
-		//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, minFilter);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, magFilter);
+    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+    //glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, minFilter);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, magFilter);
 
     glTexImage2D(GL_TEXTURE_2D, 0, 3, bmpFile->w, bmpFile->h, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, bmpFile->pixels);
 
     SDL_FreeSurface(bmpFile);
-	
-		return true;
-	}
-	
-	return false;
+  
+    return true;
+  }
+  
+  return false;
 }
 
 bool SBMPTexture::createMipmap(const char *filename, int minFilter, int magFilter, bool clampToEdge) {
   SDL_Surface *bmpFile;
 
-	destroy();
-	
+  destroy();
+  
   if ( (bmpFile = SDL_LoadBMP(filename) ) ) {
-		glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
-		
-		glGenTextures(1, &texture);
-		glBindTexture(GL_TEXTURE_2D,texture);
-		
-		if (clampToEdge) {
-			glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_CLAMP_TO_EDGE);
-			glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_CLAMP_TO_EDGE);
-		}
-	
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,minFilter);
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,magFilter);
-		
-		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, bmpFile->w, bmpFile->h,GL_BGR_EXT, GL_UNSIGNED_BYTE,bmpFile->pixels);
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
+    
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D,texture);
+    
+    if (clampToEdge) {
+      glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_CLAMP_TO_EDGE);
+      glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_CLAMP_TO_EDGE);
+    }
+  
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,minFilter);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,magFilter);
+    
+    gluBuild2DMipmaps(GL_TEXTURE_2D, 3, bmpFile->w, bmpFile->h,GL_BGR_EXT, GL_UNSIGNED_BYTE,bmpFile->pixels);
 
     SDL_FreeSurface(bmpFile);
 
     return true;
-	}
-	
-	return false;
+  }
+  
+  return false;
 }
 
 GLuint SBMPTexture::getGLTexture() {
@@ -91,8 +91,8 @@ void SBMPTexture::select() {
 }
 
 void SBMPTexture::destroy() {
-	if (texture) {
+  if (texture) {
     glDeleteTextures(1, &texture);
-		texture = 0;
+    texture = 0;
   }
 }
