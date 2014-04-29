@@ -3,7 +3,7 @@
 
 #include <GL/glew.h>
 
-class SBMPTexture
+class SBMPTexture 
 {
 public:
   void destroy();
