@@ -20,112 +20,98 @@ SDL_GLContext gContext;
 
 enum Key { NO_GAME_KEY = 0, KEY_ROT_UP_CUBE = 1, KEY_ROT_DOWN_CUBE = 2 };
 bool key_map[2];
-//GLfloat	rquad1;
-//GLfloat	rquad2;
-
 float rot[3] = {40.0f, 45.0f, 0.0f };
 float oldMousePos_x = 0.0f;
 float oldMousePos_y = 0.0f;
 bool bLButtonDown = false;
-
-//GLfloat LightAmbient[]= { 0.5f, 0.5f, 0.5f, 1.0f }; // Ambiente Lichtwere
-//GLfloat LightDiffuse[]= { 1.0f, 1.0f, 1.0f, 1.0f }; // Diffuse Lichtwerte
-//GLfloat LightSpecular[]= { 0.0f, 0.0f, 0.0f, 0.0f }; // Diffuse Lichtwerte
-//GLfloat LightEmission[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-//GLfloat LightPosition[]= { 0.0f, 0.0f, -1.0f, 1.0f }; // Lichtposition
-//bool scan_colors = false;
-//bool solve_rubik = false;
-
 RubiksCube rubi;
 
 // this functions handles all SDL events every loop
 bool handleEvents() {
-	SDL_Event event;
+  SDL_Event event;
 
  	//Next event
-	while (SDL_PollEvent(&event))
-	{
-		//Check event
+	while (SDL_PollEvent(&event)) {
+    //Check event
 		switch(event.type) {
-			case SDL_KEYDOWN:
-            {
-				switch (event.key.keysym.sym) {
-				case SDLK_u:
-					if(!rubi.inRotation() && event.key.keysym.mod & KMOD_SHIFT) {
-						key_map[NO_GAME_KEY] = false;
-						rubi.rotation[rubi.TOP] = -90.0f;
-					}
-					else if(!rubi.inRotation()) {
-						key_map[NO_GAME_KEY] = false;
-						rubi.rotation[rubi.TOP] = 90.0f;
-					}
+			case SDL_KEYDOWN: {
+        switch (event.key.keysym.sym) {
+          case SDLK_u:
+            if(!rubi.inRotation() && event.key.keysym.mod & KMOD_SHIFT) {
+						  key_map[NO_GAME_KEY] = false;
+						  rubi.rotation[rubi.TOP] = -90.0f;
+            }
+            else if(!rubi.inRotation()) {
+						  key_map[NO_GAME_KEY] = false;
+						  rubi.rotation[rubi.TOP] = 90.0f;
+            }
 				    break;
 
-				case SDLK_d:
-					if(!rubi.inRotation() && event.key.keysym.mod & KMOD_SHIFT) {
-						key_map[NO_GAME_KEY] = false;
-						rubi.rotation[rubi.BOTTOM] = 90.0f;
-					}
-					else if(!rubi.inRotation()) {
-						key_map[NO_GAME_KEY] = false;
-						rubi.rotation[rubi.BOTTOM] = -90.0f;
-					}
+          case SDLK_d:
+            if(!rubi.inRotation() && event.key.keysym.mod & KMOD_SHIFT) {
+						  key_map[NO_GAME_KEY] = false;
+						  rubi.rotation[rubi.BOTTOM] = 90.0f;
+            }
+            else if(!rubi.inRotation()) {
+						  key_map[NO_GAME_KEY] = false;
+						  rubi.rotation[rubi.BOTTOM] = -90.0f;
+            }
 				    break;
 
-				case SDLK_l:
-					if(!rubi.inRotation() && event.key.keysym.mod & KMOD_SHIFT) {
-						key_map[NO_GAME_KEY] = false;
-						rubi.rotation[rubi.LEFT] = 90.0f;
-					}
-					else if(!rubi.inRotation()) {
-						key_map[NO_GAME_KEY] = false;
-						rubi.rotation[rubi.LEFT] = -90.0f;
-					}
+				  case SDLK_l:
+            if(!rubi.inRotation() && event.key.keysym.mod & KMOD_SHIFT) {
+              key_map[NO_GAME_KEY] = false;
+						  rubi.rotation[rubi.LEFT] = 90.0f;
+            }
+            else if(!rubi.inRotation()) {
+						  key_map[NO_GAME_KEY] = false;
+						  rubi.rotation[rubi.LEFT] = -90.0f;
+            }
 				    break;
 
-				case SDLK_r:
-					if(!rubi.inRotation() && event.key.keysym.mod & KMOD_SHIFT) {
-						key_map[NO_GAME_KEY] = false;
-						rubi.rotation[rubi.RIGHT] = -90.0f;
-					}
-					else if(!rubi.inRotation()) {
-						key_map[NO_GAME_KEY] = false; 
-						rubi.rotation[rubi.RIGHT] = 90.0f;
-					}
+				  case SDLK_r:
+            if(!rubi.inRotation() && event.key.keysym.mod & KMOD_SHIFT) {
+              key_map[NO_GAME_KEY] = false;
+						  rubi.rotation[rubi.RIGHT] = -90.0f;
+            }
+            else if(!rubi.inRotation()) {
+						  key_map[NO_GAME_KEY] = false; 
+						  rubi.rotation[rubi.RIGHT] = 90.0f;
+            }
 				    break;
 
-				case SDLK_f:
-					if(!rubi.inRotation() && event.key.keysym.mod & KMOD_SHIFT) {
-						key_map[NO_GAME_KEY] = false; 
-						rubi.rotation[rubi.FRONT] = -90.0f;
-					}
-					else if(!rubi.inRotation()) {
-						key_map[NO_GAME_KEY] = false; 
-						rubi.rotation[rubi.FRONT] = 90.0f;
-					}
-				    break;
+          case SDLK_f:
+            if(!rubi.inRotation() && event.key.keysym.mod & KMOD_SHIFT) {
+						  key_map[NO_GAME_KEY] = false; 
+						  rubi.rotation[rubi.FRONT] = -90.0f;
+            }
+            else if(!rubi.inRotation()) {
+              key_map[NO_GAME_KEY] = false;
+              rubi.rotation[rubi.FRONT] = 90.0f;
+            }
+            break;
 
-				case SDLK_b:
-					if(!rubi.inRotation() && event.key.keysym.mod & KMOD_SHIFT) {
-						key_map[NO_GAME_KEY] = false; 
-						rubi.rotation[rubi.BACK] = 90.0f;
-					}
-					else if(!rubi.inRotation()) {
-						key_map[NO_GAME_KEY] = false;
-						rubi.rotation[rubi.BACK] = -90.0f;
-					}
-				    break;
+          case SDLK_b:
+            if(!rubi.inRotation() && event.key.keysym.mod & KMOD_SHIFT) {
+              key_map[NO_GAME_KEY] = false;
+              rubi.rotation[rubi.BACK] = 90.0f;
+            }
+            else if(!rubi.inRotation()) {
+              key_map[NO_GAME_KEY] = false;
+              rubi.rotation[rubi.BACK] = -90.0f;
+            }
+            break;
 
-				case SDLK_ESCAPE:
-					return false;
-					break;
+          case SDLK_ESCAPE:
+            return false;
+            break;
 				}
 
 				break;
-			}
+      }
 
 			case SDL_QUIT:
-				return false;
+        return false;
 				break;
 
 			case SDL_MOUSEBUTTONDOWN:
@@ -161,23 +147,23 @@ bool handleEvents() {
 }
 
 int DrawGLScene() {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear Screen And Depth Buffer
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear Screen And Depth Buffer
 
 	// Reset the transformation matrix to the identity matrix:
 	// [ 1 0 0 0 ]
 	// [ 0 1 0 0 ]
 	// [ 0 0 1 0 ]
 	// [ 0 0 0 1 ]
-	glLoadIdentity();									// Reset The Current Modelview Matrix
+	glLoadIdentity(); // Reset The Current Modelview Matrix
 
-	glTranslatef(-4.0,1.0,-25.0);						// Move Out the Screen -25.0
+	glTranslatef(-4.0,1.0,-25.0); // Move Out the Screen -25.0
 
 	glTranslatef(-1,-1,-1);
 
 	// rotate the whole cube
-    glRotatef(rot[0], 1.0f, 0.0f, 0.0f);
-    glRotatef(rot[1], 0.0f, 1.0f, 0.0f);
-    glRotatef(rot[2], 0.0f, 0.0f, 1.0f);
+  glRotatef(rot[0], 1.0f, 0.0f, 0.0f);
+  glRotatef(rot[1], 0.0f, 1.0f, 0.0f);
+  glRotatef(rot[2], 0.0f, 0.0f, 1.0f);
 
 	glTranslatef(1,1,1);
 
@@ -194,7 +180,7 @@ int DrawGLScene() {
 	}
     
 	if(rubi.movements.length() > 0 && !rubi.inRotation()) {
-		switch(rubi.movements[rubi.movements_done]) {
+    switch(rubi.movements[rubi.movements_done]) {
 		case 'Q':
 			rubi.rotation[rubi.TOP] = 90.0f;
 			break;
@@ -254,7 +240,7 @@ int DrawGLScene() {
 
 	glColor3f(1.0f,1.0f,1.0f);	// Set the color to white and display some messages
 	rubi.font.printAt(380,450,"Control Keys:"); //Keys: l=Left, f=Front, r=Right, b=Back, u=Up, d=Down");
-	rubi.font.printAt(380,430,"Left Rotate: l");//", f=Front, r=Right, b=Back, u=Up, d=Down");
+	rubi.font.printAt(380,430,"Left Rotate: l");
   rubi.font.printAt(380,410,"Front Rotate: f");
   rubi.font.printAt(380,390,"Right Rotate: r");
   rubi.font.printAt(380,370,"Back Rotate: b");
@@ -269,28 +255,27 @@ int DrawGLScene() {
 
 	glPopAttrib();
 
-
 	glLoadIdentity();
 
 	return true; // Alles hat geklappt
 }
 
 bool InitGL(int width, int height) { // Initialisierung des OpenGL-Fensters
-	if (height == 0) {									// Prevent A Divide By Zero By
-		height = 1;										// Making Height Equal One
+  if (height == 0) { // Prevent A Divide By Zero By
+		height = 1; // Making Height Equal One
 	}
     
-	glViewport(0,0,width,height);						// Reset The Current Viewport
+	glViewport(0,0,width,height); // Reset The Current Viewport
     
-	glMatrixMode(GL_PROJECTION);						// Select The Projection Matrix
-	glLoadIdentity();									// Reset The Projection Matrix
+	glMatrixMode(GL_PROJECTION); // Select The Projection Matrix
+	glLoadIdentity(); // Reset The Projection Matrix
     
 	// Calculate The Aspect Ratio Of The Window
 	gluPerspective(45.0f,(GLfloat)width/(GLfloat)height,0.1f,100.0f);
 	//glOrtho(-12.5, 12.5, -10, 10, 0.1, 100);
     
-	glMatrixMode(GL_MODELVIEW);							// Select The Modelview Matrix
-	glLoadIdentity();									// Reset The Modelview Matrix
+	glMatrixMode(GL_MODELVIEW); // Select The Modelview Matrix
+	glLoadIdentity(); // Reset The Modelview Matrix
     
 	//glEnable(GL_NORMALIZE);
 	//glLightfv(GL_LIGHT1, GL_AMBIENT, LightAmbient); // initialisiere das ambiente Licht
@@ -300,17 +285,17 @@ bool InitGL(int width, int height) { // Initialisierung des OpenGL-Fensters
 	//glEnable(GL_LIGHT1); // aktiviere Licht eins
 	//glEnable(GL_LIGHTING); // aktiviere Beleuchtung
     
-	glShadeModel(GL_SMOOTH);							// Enable Smooth Shading
-	glClearColor(0.2f, 0.2f, 0.2f, 0.5f);				// light-black Background
-	glClearDepth(1.0f);									// Depth Buffer Setup
-	glEnable(GL_DEPTH_TEST);							// Enables Depth Testing
-	glDepthFunc(GL_LEQUAL);								// The Type Of Depth Testing To Do
-	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);	// Really Nice Perspective Calculations
+	glShadeModel(GL_SMOOTH); // Enable Smooth Shading
+	glClearColor(0.2f, 0.2f, 0.2f, 0.5f); // light-black Background
+	glClearDepth(1.0f); // Depth Buffer Setup
+	glEnable(GL_DEPTH_TEST); // Enables Depth Testing
+	glDepthFunc(GL_LEQUAL); // The Type Of Depth Testing To Do
+	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST); // Really Nice Perspective Calculations
     
 	// set caption
-    //SDL_WM_SetCaption("The Rubik Cube (c) by Stanje Gerald","");
+  //SDL_WM_SetCaption("The Rubik Cube (c) by Stanje Gerald","");
     
-	return true;										// Initialization Went OK
+	return true; // Initialization Went OK
 }
 
 bool init() {
@@ -323,7 +308,7 @@ bool init() {
 		success = false;
 	}
 	else {
-		// Use OpenGL 2.1
+    // Use OpenGL 2.1
 		SDL_GL_SetAttribute( SDL_GL_CONTEXT_MAJOR_VERSION, 2 );
 		SDL_GL_SetAttribute( SDL_GL_CONTEXT_MINOR_VERSION, 1 );
         

@@ -25,7 +25,7 @@ void SBMPFont::init(const char *fontFile) {
 
     glNewList(lists + i,GL_COMPILE);
 			glBegin(GL_QUADS);
-				glTexCoord2f(x,y+0.0625f);			
+        glTexCoord2f(x,y+0.0625f);			
 				glVertex2i(0,0);
 				glTexCoord2f(x+0.0625f,y+0.0625f);	
 				glVertex2i(16,0);			
