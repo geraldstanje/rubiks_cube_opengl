@@ -8,6 +8,7 @@ class SBMPTexture
 public:
   void destroy();
 	
+  SBMPTexture();
   SBMPTexture(const char* filename, int minFilter = GL_LINEAR, int magFilter = GL_LINEAR, bool clampToEdge = false);
   virtual ~SBMPTexture();
 	
